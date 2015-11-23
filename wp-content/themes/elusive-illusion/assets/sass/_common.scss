@@ -1,0 +1,40 @@
+/* 
+* Common Style
+*===============================================================================
+*/
+body,html{
+  padding: 0;
+  margin: 0;  
+}
+body{
+  font-family: $base_font;
+  font-size: $base_font_size;  
+ background-color:$color_deep1;
+}
+a{
+  @include transition(all, 0.25s);
+}
+.btn.btn-custom,.btn-custom{
+  background: $color_light2;
+  border:0;
+  border-bottom: 3px solid $color_light1;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 38px;           
+  opacity: 0.8;
+  padding: 0 32px;
+  text-align: center;
+  border-radius: 0;
+  color: $color_dark;
+  &:hover{
+    background: $color_light1;
+  }
+}
+.embed-responsive{
+  background: $color_dark4;
+}
+@media (max-width: $screen-md-min) {
+  .container > .row{
+    margin: 0;
+  }
+}
