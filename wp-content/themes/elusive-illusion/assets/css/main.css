@@ -776,7 +776,11 @@ a {
 .entry-content .form-control {
   box-shadow: none;
   border-radius: 0;
-  border-color: #c2c2c2; }
+  border-color: #c2c2c2;
+  -webkit-transition: all 0.25s ease-in-out;
+  -moz-transition: all 0.25s ease-in-out;
+  -o-transition: all 0.25s ease-in-out;
+  transition: all 0.25s ease-in-out; }
   .entry-content .form-control:focus {
     border-color: #265998; }
 .entry-content textarea.form-control {

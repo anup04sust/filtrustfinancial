@@ -6,8 +6,12 @@
     Created on : Nov 23, 2015, 6:13:09 PM
     Author     : Anup Biswas <anup@illusivedesign.net>
 */
-#customer-informations{
+@import "mixin";
+#customer-informations{  
   display: block;
+  #customer-informations-stps{
+    opacity: 0;
+  }
   .r-tabs{
     .r-tabs-nav{
       padding: 0;
@@ -18,7 +22,7 @@
         display: table-cell;
         border-bottom: 2px solid #ebebeb;
         width: 16.6%;
-        vertical-align: middle;
+        vertical-align: bottom;
         .r-tabs-anchor{
           display: block;
           padding:22px 5px 23px 37px;
@@ -31,8 +35,9 @@
           text-decoration: none;
           border-bottom: 2px solid transparent;
           margin-bottom: -2px;
+          outline: none;
           position: relative;
-          
+
           .pointer{
             position: absolute;
             display: block;
@@ -57,12 +62,15 @@
         }
         &.r-tabs-state-active{
           .r-tabs-anchor{
-             border-color: #ffc30d;
-             .pointer{
-                color: #ffffff;
-                background-color: #ffc30d;
-             }
-          }
+            border-color: #ffc30d;
+            .pointer{
+              color: #ffffff;
+              background-color: #ffc30d;
+            }
+          }          
+        }
+        &.r-tabs-state-disabled{
+          opacity: .8;
         }
       }
     }/* end r-tabs-nav*/
@@ -72,5 +80,201 @@
     .r-tabs-panel{
       display: none;
     }
+  }
+  .step-fields{
+    padding: 30px 0px;
+    border: 0px solid #000;
+    .form-group{
+       margin-bottom: 20px;
+      label{
+        font-size: 13px;
+        color: #3e3e3e;
+        font-weight: normal;
+        line-height: 16px;
+        margin-bottom: 7px;
+      }
+      .form-control{
+        min-height: 38px;
+      }
+      .btn-submit{
+        font-weight: bold;
+        font-size: 14px;
+        font-family: "Open Sans",sans-serif;
+        text-align: left;
+        line-height: 20px;
+        position: relative;
+        background-color: #013d88;
+        outline: none;
+        padding:8px 30px;   
+         @include transition(all, 0.25s);
+        > i{
+          position: absolute;
+          color: #ffc30d;
+          top: 50%;
+          margin-top: -10px;
+          line-height: 20px;
+          font-size: 12px;
+           @include transition(all, 0.25s);
+        }
+        &.nav-next{
+           padding:8px 30px 8px 20px;      
+          > i{
+            right: 10px;
+          }
+          &:hover{
+            > i{
+              right: 8px;
+            }
+          }
+        }  
+        &.nav-prev{
+           padding:8px 20px 8px 30px;      
+          > i{
+            left: 10px;
+          }
+          &:hover{
+            > i{
+              left: 8px;
+            }
+          }
+        }  
+        &:hover{
+          background-color: rgba(1, 61, 136, 0.85);
+          >i{
+            color: #fff;
+          }
+        }
+      }
+      .btn-group.bs-selects{
+        .btn-clear{
+          background: transparent;
+          border-color: #c2c2c2;
+          border-bottom-width: 1px;   
+          outline: none;
+          &:focus{
+            box-shadow: none;
+          }
+        }
+        .dropdown-menu{
+          border-color: #265998;
+          border-radius: 0;
+          padding: 1px;
+          padding-bottom: 0;
+          margin-top: -1px;
+          >li{
+            > a{
+              outline: none;
+              padding: 5px 10px;
+              margin-bottom: 1px;
+              box-shadow: none;
+            }
+          }
+        }
+        &.open{
+          .btn-clear{
+            box-shadow: none;
+            border-color: #265998;
+          }
+        }
+      }
+      .radio{
+        > label{
+          position: relative;
+          display: inline-block;
+          padding-left: 25px;
+           line-height: 19px;
+          &:before{
+            position: absolute;
+            content: " ";         
+            color:  #969696;
+            border: 2px solid #969696;
+            width: 18px;
+            height: 18px;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 100px;
+            left: 0;
+            background: url(../images/dot.png) center center no-repeat;
+            background-position: -99px; 
+          }
+          &.field-checked{
+            &:before{
+               background-position: center center; 
+            }
+          }
+          > input[type="radio"]{
+            display: none;
+          }
+        }
+      }
+      .checkbox{
+        > label{
+          position: relative;
+          display: inline-block;
+          padding-left: 25px;
+           line-height: 19px;
+          &:before{
+            position: absolute;
+            content: " ";         
+            color:  #969696;
+            border: 2px solid #969696;
+            width: 18px;
+            height: 18px;
+            line-height: 14px;
+            font-size: 12px;
+            text-align: center;
+            border-radius: 0px;
+            left: 0;
+            background: url(../images/check.png) center center no-repeat;
+            background-position: -99px; 
+          }
+          &.field-checked{
+            &:before{
+               background-position: center center; 
+            }
+          }
+          > input[type="checkbox"]{
+            display: none;
+          }
+        }
+      }
+      .others-options{
+        display: none;
+      }
+      .scetion-title{
+        font-size: 16px;
+         font-family: 'Roboto Condensed', sans-serif;
+         margin: 18px 0px 20px;
+         font-weight: bold;
+        
+      }
+    }
+    .input-group{
+      &.date-picker{
+        .form-control{
+          border-right-width: 0px;
+          &:focus + .input-group-addon{
+             border-color: #265998;
+          }
+        }
+        .input-group-addon{
+          border-radius: 0;
+          background: transparent;
+          border-color: #c2c2c2;
+           @include transition(all, 0.25s);
+        }
+      }
+    }
+  }  
+}
+.alert{
+  &.alert-note{
+    font-size: 14px;
+    color: #3e3e3e;
+    font-style: italic;
+    padding: 15px 0;
+    border-bottom: 0px solid #c2c2c2;
+    margin-bottom: 0px;
   }
 }

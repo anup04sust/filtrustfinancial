@@ -9,12 +9,13 @@ get_header();
 global $eli_options;
 get_template_part('templatepart/page', 'banner');
 ?>
-<section id="inner-content" class="sidebar-left-inner">
+<section id="inner-content" class="sidebar-custom-inner">
   <div class="<?php theme_layout_style(); ?>">
     <div class="row">
       <div class="entry-content col-xs-12 col-sm-8 col-md-9">
-        <form id="customer-informations" method="post" action="<?php the_permalink() ?>">
+        <form id="customer-informations" method="post" action="<?php the_permalink() ?>" enctype="multipart/form-data" autocomplete="on">
           <div id="customer-informations-stps">
+            <?php if(!empty($_POST)) wpprint($_POST);?>
            <?php get_template_part('form-templates/tab','navbar');?>                   
            <?php get_template_part('form-templates/tab','borrows');?>                   
            <?php get_template_part('form-templates/tab','status');?>                   

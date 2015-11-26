@@ -16,37 +16,37 @@ class ELI_Tweet_Feeds {
   public $access_token;
   public $access_secret;
   public $user_name;
-  
-  public $cache_enabled= false;
-  public $cache_lifetime= 3600;
-  public $hash_salt= null;
+  public $cache_enabled = false;
+  public $cache_lifetime = 3600;
+  public $hash_salt = null;
 
-  public function __construct() {   
+  public function __construct() {
     add_action('wp_enqueue_scripts', array($this, 'scripts'));
     add_action('wp_ajax_eli_tweets', array($this, 'tweets'));
     add_action('wp_ajax_nopriv_eli_tweets', array($this, 'tweets'));
   }
 
   private function config() {
-    global $eli_options;   
+    global $eli_options;
     $this->consumer_key = $eli_options['tweet_api_consumer_key'];
     $this->consumer_secret = $eli_options['tweet_api_consumer_secret'];
     $this->access_token = $eli_options['tweet_api_access_token'];
     $this->access_secret = $eli_options['tweet_api_access_secret'];
     $this->user_name = $eli_options['tweet_username'];
     $this->hash_salt = md5(dirname(__FILE__));
-   
   }
 
   public function scripts() {
-    wp_enqueue_script('tweetie', ELUSICVE_THEME_URI . 'includes/tweetie/tweetie.min.js', array(), '1.0.0', true);
-    wp_enqueue_script('tweet-feeds', ELUSICVE_THEME_URI . 'includes/tweetie/tweets.js', array('tweetie'), '1.0.0', true);
-    wp_localize_script('tweet-feeds', 'object_tweet', array('ajaxurl' => admin_url('admin-ajax.php'), 'action' => 'eli_tweets'));
+    if (is_page_template('tpl-frotpage.php')) {
+      wp_enqueue_script('tweetie', ELUSICVE_THEME_URI . 'includes/tweetie/tweetie.min.js', array(), '1.0.0', true);
+      wp_enqueue_script('tweet-feeds', ELUSICVE_THEME_URI . 'includes/tweetie/tweets.js', array('tweetie'), '1.0.0', true);
+      wp_localize_script('tweet-feeds', 'object_tweet', array('ajaxurl' => admin_url('admin-ajax.php'), 'action' => 'eli_tweets'));
+    }
   }
 
   public function tweets() {
-     $this->config();  
-    
+    $this->config();
+
     $number = filter_input(INPUT_GET, 'count', FILTER_SANITIZE_NUMBER_INT);
     $exclude_replies = filter_input(INPUT_GET, 'exclude_replies', FILTER_SANITIZE_SPECIAL_CHARS);
     $list_slug = filter_input(INPUT_GET, 'list_slug', FILTER_SANITIZE_SPECIAL_CHARS);
@@ -99,7 +99,7 @@ class ELI_Tweet_Feeds {
         'count' => $number,
         'exclude_replies' => $exclude_replies,
         'screen_name' => $this->user_name
-      );      
+      );
       $url = '/statuses/user_timeline';
     }
 

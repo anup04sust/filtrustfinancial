@@ -104,6 +104,7 @@
     box-shadow: none;
     border-radius: 0;
     border-color: $form_border_color;
+    @include transition(all, 0.25s);
     &:focus{
        border-color: $form_border_color_active;
     }
