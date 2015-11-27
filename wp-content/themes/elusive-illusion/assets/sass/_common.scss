@@ -9,8 +9,14 @@ body,html{
 body{
   font-family: $base_font;
   font-size: $base_font_size;  
- background-color:$color_deep1;
+  background-color:$color_deep1;
+  &.fixed-topper{ 
+    #page-wrap{
+      padding-top: 105px;
+    }
+  }
 }
+
 a{
   @include transition(all, 0.25s);
 }
@@ -32,6 +38,11 @@ a{
 }
 .embed-responsive{
   background: $color_dark4;
+}
+.fixed-top{
+  position: fixed!important;
+  width: 100%;
+  top: 0;
 }
 @media (max-width: $screen-md-min) {
   .container > .row{

@@ -18,12 +18,13 @@
     <?php
     wp_head();
     global $eli_options;
+    $body_class = !empty($eli_options['is_fixed_top'])? 'fixed-topper':'';
     ?>
   </head>
-  <body <?php body_class(); ?>> 
+  <body <?php body_class($body_class); ?>> 
     <?php do_action('eli_after_body'); ?>
     <div id="page-wrap" class="clearfix">
-      <header id="header" class="site-header clearfix">
+      <header id="header" class="site-header clearfix <?php echo !empty($eli_options['is_fixed_top'])? 'fixed-top':'';?> " <?php echo !empty($eli_options['is_fixed_top'])? 'data-spy="affix"':'';?> data-offset-top="20">
         <div class="topbar">
           <div class="<?php theme_layout_style(); ?>">
             <?php do_action('eli_header_top'); ?>
@@ -44,7 +45,7 @@
                     printf('<img class="img-responsive logo pull-left" src="%s" alt="logo"/>', $eli_options['logo_url']['url']);
                   }
                   ?>
-                  <span class="main_title visible-sm"><?php bloginfo('name'); ?></span>
+                  <span class="main_title sr-only"><?php bloginfo('name'); ?></span>
 
                 </a></h1>             
             </div>

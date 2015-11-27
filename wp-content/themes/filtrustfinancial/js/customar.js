@@ -24,8 +24,8 @@ var BSMLTSF = {
     $formSteps.responsiveTabs({
       startCollapsed: 'accordion',
       animation: 'fade',
-      //disabled: [1, 2, 3, 4, 5],
-      active:5,
+      disabled: [1, 2, 3, 4, 5],
+      active:0,
       load: function () {
         $formSteps.css('opacity', 1);
       },
@@ -89,7 +89,13 @@ var BSMLTSF = {
         
         });
       }
-  }
+  },
+  formStp1:function(){},
+  formStp2:function(){},
+  formStp3:function(){},
+  formStp4:function(){},
+  formStp5:function(){},
+  formStp6:function(){},
 };
 nc(document).ready(function () {
   BSMLTSF.bind();

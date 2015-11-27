@@ -276,6 +276,36 @@ class ELI_Config {
         'subtitle' => __('Show subtitle below page title', ELUSICVE_THEME_LAN),
         'default' => false,
       ),
+      array(
+        'id' => 'is_fixed_top',
+        'type' => 'switch',
+        'title' => __('Fixed Top/Header', ELUSICVE_THEME_LAN),
+        'default' => false,
+      ),
+      array(
+        'id' => 'header-bg',
+        'type' => 'color_rgba',
+        'output' => array('#header'),
+        'title' => __('Header Background', ELUSICVE_THEME_LAN),
+        'subtitle' => __('Pick a background color for Header (default: #FFFFFF).', ELUSICVE_THEME_LAN),
+        'default' => array(
+          'color' => '#FFFFFF',
+          'alpha' => '1'
+        ),
+        'mode' => 'background',
+      ),
+      array(
+        'id' => 'header-bg-affix',
+        'type' => 'color_rgba',
+        'output' => array('#header.affix'),
+        'title' => __('Header Background', ELUSICVE_THEME_LAN),
+        'subtitle' => __('Pick a background color for Header (default: #FFFFFF).', ELUSICVE_THEME_LAN),
+        'default' => array(
+          'color' => '#FFFFFF',
+          'alpha' => '.8'
+        ),
+        'mode' => 'background',
+      ),
     );
     return array(
       'title' => __('Page Header', ELUSICVE_THEME_LAN),
@@ -467,13 +497,13 @@ class ELI_Config {
         'id' => 'contact_map_script',
         'type' => 'ace_editor',
         'title' => __('Google Map Script', ELUSICVE_THEME_LAN),
-        'default' => '',        
+        'default' => '',
         'mode' => 'html',
       ),
       array(
         'id' => 'contact_form_shortcode',
-        'type' => 'text',        
-        'title' => __('Add Form Shortcode(Contact Form 7)', ELUSICVE_THEME_LAN),       
+        'type' => 'text',
+        'title' => __('Add Form Shortcode(Contact Form 7)', ELUSICVE_THEME_LAN),
       ),
       array(
         'id' => 'section-social',

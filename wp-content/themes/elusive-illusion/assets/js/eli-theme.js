@@ -23,7 +23,7 @@ nc(document).ready(function () {
     navbar: {
       title: 'MENU',
     },
-navbars: [
+    navbars: [
       {
         position: 'top',
         content: ['<a href="' + eli_obj.site_url + '" class="mm-logo"><img src="' + eli_obj.mm_logo + '" /></a>'], height: 2,
@@ -53,6 +53,27 @@ navbars: [
   });
   /* Table */
   nc('.entry-content table').addClass('table');
-   /* Embed Responsive */
+  /* Embed Responsive */
   nc('.embed-responsive iframe').addClass('embed-responsive-item');
+
+  nc('.tweetie-carousel').owlCarousel({
+    items: 3,
+    loop: true,
+    margin: 10,
+    autoplay: true,
+    autoplayTimeout: 15000,
+    autoplayHoverPause: true,
+     nav: false,
+    responsive: {
+      0: {
+        items: 1,       
+      },
+      768: {
+        items:2,       
+      },
+      992: {
+        items: 3,       
+      }
+    }
+  });
 });

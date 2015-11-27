@@ -22,11 +22,8 @@ class ELI_Tweet_Feeds {
 
   public function __construct() {
     add_action('wp_enqueue_scripts', array($this, 'scripts'));
-    add_action('wp_ajax_eli_tweets', array($this, 'tweets'));
-    add_action('wp_ajax_nopriv_eli_tweets', array($this, 'tweets'));
-  }
-
-  private function config() {
+    //add_action('wp_ajax_eli_tweets', array($this, 'tweets'));
+    //add_action('wp_ajax_nopriv_eli_tweets', array($this, 'tweets'));
     global $eli_options;
     $this->consumer_key = $eli_options['tweet_api_consumer_key'];
     $this->consumer_secret = $eli_options['tweet_api_consumer_secret'];
@@ -38,19 +35,19 @@ class ELI_Tweet_Feeds {
 
   public function scripts() {
     if (is_page_template('tpl-frotpage.php')) {
-      wp_enqueue_script('tweetie', ELUSICVE_THEME_URI . 'includes/tweetie/tweetie.min.js', array(), '1.0.0', true);
-      wp_enqueue_script('tweet-feeds', ELUSICVE_THEME_URI . 'includes/tweetie/tweets.js', array('tweetie'), '1.0.0', true);
-      wp_localize_script('tweet-feeds', 'object_tweet', array('ajaxurl' => admin_url('admin-ajax.php'), 'action' => 'eli_tweets'));
+      //wp_enqueue_script('tweetie', ELUSICVE_THEME_URI . 'includes/tweetie/tweetie.min.js', array(), '1.0.0', true);
+      //wp_enqueue_script('tweet-feeds', ELUSICVE_THEME_URI . 'includes/tweetie/tweets.js', array('tweetie'), '1.0.0', true);
+      //wp_localize_script('tweet-feeds', 'object_tweet', array('ajaxurl' => admin_url('admin-ajax.php'), 'action' => 'eli_tweets'));
     }
   }
 
   public function tweets() {
-    $this->config();
+   
 
-    $number = filter_input(INPUT_GET, 'count', FILTER_SANITIZE_NUMBER_INT);
-    $exclude_replies = filter_input(INPUT_GET, 'exclude_replies', FILTER_SANITIZE_SPECIAL_CHARS);
-    $list_slug = filter_input(INPUT_GET, 'list_slug', FILTER_SANITIZE_SPECIAL_CHARS);
-    $hashtag = filter_input(INPUT_GET, 'hashtag', FILTER_SANITIZE_SPECIAL_CHARS);
+    $number = 10;
+    $exclude_replies = FALSE;
+    $list_slug = NULL;
+    $hashtag = NULL;
     if ($this->cache_enabled) {
       // Generate cache key from query data
       $cache_key = md5(
@@ -106,13 +103,13 @@ class ELI_Tweet_Feeds {
     $tweets = $connection->get($url, $params);
 
     // Return JSON Object
-    header('Content-Type: application/json');
+    //header('Content-Type: application/json');
 
-    $tweets = json_encode($tweets);
+    //$tweets = json_encode($tweets);
     if ($this->cache_enabled)
       file_put_contents($cache_path . $cache_key, $tweets);
-    echo $tweets;
-    exit();
+    return $tweets;
+    
   }
 
   public function getConnectionWithToken($cons_key, $cons_secret, $oauth_token, $oauth_secret) {
@@ -122,5 +119,7 @@ class ELI_Tweet_Feeds {
   }
 
 }
-
-new ELI_Tweet_Feeds();
+function get_tweet_feed(){
+  $Tweet_Feeds = new ELI_Tweet_Feeds();
+  return $Tweet_Feeds->tweets();
+}
