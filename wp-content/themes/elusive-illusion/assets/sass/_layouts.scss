@@ -221,70 +221,76 @@
 */
 #inner-content{
   background:$background_color;
-  .entry-content{
-    padding: 0px 0 30px;
+  .page-contents{
+    padding: 0px 0 50px;
     line-height: 1.6;
     color: $color_dark1;
-
-    p{
-      color: $color_dark1;
+    .entry-header{
+      margin-bottom: 15px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid $color_dark3;
     }
-    blockquote,.blockquote{
-      background: url(../img/blockquote.png) 18px 25px no-repeat;
-      border: 1px solid $color_dark4;
-      @include  box-shadow(0px, 2px ,0px, transparentize($color_dark,.95));
-      padding: 35px 25px 10px 90px;
-    }
-    h2,h3,h4{
-      font-family: $base_font_alt;
-      &:first-child{
-        margin-top: 0;
+    .entry-content{
+      p{
+        color: $color_dark1;
       }
-    }
-    h2{
-      font-size: $heading_extra_2;
-    }
-    img{
-      max-width: 100%;
-    }
-    .address-box{
-      padding:30px 0;
-      color:$color_dark2;
-      .address{
-        padding-left: 30px;
-        position: relative;
-        color:$color_dark2;
-        &:before{
-          font-family: 'FontAwesome';
-          content: "\f041";
-          position: absolute;
-          left: 0;
+      blockquote,.blockquote{
+        background: url(../img/blockquote.png) 18px 25px no-repeat;
+        border: 1px solid $color_dark4;
+        @include  box-shadow(0px, 2px ,0px, transparentize($color_dark,.95));
+        padding: 35px 25px 10px 90px;
+      }
+      h2,h3,h4{
+        font-family: $base_font_alt;
+        &:first-child{
+          margin-top: 0;
         }
       }
-      .addr-phone{
-        padding-left: 30px;
-        position: relative;
-        color:$color_dark2;
-        &:before{
-          font-family: 'FontAwesome';
-          content: "\f095";
-          position: absolute;
-          left: 0;
-        }
+      h2{
+        font-size: $heading_extra_2;
       }
-      .addr-email{
-        padding-left: 30px;
-        position: relative;
-        &:before{
-          font-family: 'FontAwesome';
-          content: "\f0e0";
-          position: absolute;
-          left: 0;
+      img{
+        max-width: 100%;
+      }
+      .address-box{
+        padding:30px 0;
+        color:$color_dark2;
+        .address{
+          padding-left: 30px;
+          position: relative;
           color:$color_dark2;
-        }        
-      }
-      a{
-        color:$color_dark2;
+          &:before{
+            font-family: 'FontAwesome';
+            content: "\f041";
+            position: absolute;
+            left: 0;
+          }
+        }
+        .addr-phone{
+          padding-left: 30px;
+          position: relative;
+          color:$color_dark2;
+          &:before{
+            font-family: 'FontAwesome';
+            content: "\f095";
+            position: absolute;
+            left: 0;
+          }
+        }
+        .addr-email{
+          padding-left: 30px;
+          position: relative;
+          &:before{
+            font-family: 'FontAwesome';
+            content: "\f0e0";
+            position: absolute;
+            left: 0;
+            color:$color_dark2;
+          }        
+        }
+        a{
+          color:$color_dark2;
+        }
       }
     }
   }

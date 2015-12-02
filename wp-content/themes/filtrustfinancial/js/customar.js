@@ -8,10 +8,10 @@ var nc = jQuery.noConflict();
 var BSMLTSF = {
   bind: function () {
     /* Custom Select Functions*/
-    nc('.bs-selects').selectpicker({
-      style: 'btn-clear',
-      size: 4
-    });
+//    nc('.bs-selects').selectpicker({
+//      style: 'btn-clear',
+//      size: 4
+//    });
     /* Date Field Functions*/
     nc('.bs-date-ddmmyyy').datetimepicker({
       format: 'DD/MM/YYYY',
