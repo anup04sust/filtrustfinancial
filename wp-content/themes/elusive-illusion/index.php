@@ -11,12 +11,14 @@ global $eli_options;
 <section id="inner-content" class="sidebar-left-inner">
           <div class="<?php theme_layout_style(); ?>">
             <div class="row">
-              <div class="entry-content col-xs-12 col-sm-8 col-md-9">
+              <div class="page-contents col-xs-12 col-sm-8 col-md-9">
                 <?php
                 if (have_posts()):
                   while (have_posts()): the_post();
-                    the_content();
+                  get_template_part('content',get_post_format());
                   endwhile;
+                else:
+                   get_template_part('content','none');
                 endif;
                 ?>
               </div>

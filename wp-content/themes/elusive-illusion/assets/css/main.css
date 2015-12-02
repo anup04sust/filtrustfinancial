@@ -274,58 +274,62 @@ a {
   * Sidebar
   *-------------------------------------------------------------------------------
   */ }
-  #inner-content .entry-content {
-    padding: 0px 0 30px;
+  #inner-content .page-contents {
+    padding: 0px 0 50px;
     line-height: 1.6;
     color: #3e3e3e; }
-    #inner-content .entry-content p {
+    #inner-content .page-contents .entry-header {
+      margin-bottom: 15px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid #c2c2c2; }
+    #inner-content .page-contents .entry-content p {
       color: #3e3e3e; }
-    #inner-content .entry-content blockquote, #inner-content .entry-content .blockquote {
+    #inner-content .page-contents .entry-content blockquote, #inner-content .page-contents .entry-content .blockquote {
       background: url(../img/blockquote.png) 18px 25px no-repeat;
       border: 1px solid #eaeaea;
       -webkit-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
       -moz-box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
       box-shadow: 0px 2px 0px rgba(0, 0, 0, 0.05);
       padding: 35px 25px 10px 90px; }
-    #inner-content .entry-content h2, #inner-content .entry-content h3, #inner-content .entry-content h4 {
+    #inner-content .page-contents .entry-content h2, #inner-content .page-contents .entry-content h3, #inner-content .page-contents .entry-content h4 {
       font-family: "Roboto Condensed", sans-serif; }
-      #inner-content .entry-content h2:first-child, #inner-content .entry-content h3:first-child, #inner-content .entry-content h4:first-child {
+      #inner-content .page-contents .entry-content h2:first-child, #inner-content .page-contents .entry-content h3:first-child, #inner-content .page-contents .entry-content h4:first-child {
         margin-top: 0; }
-    #inner-content .entry-content h2 {
+    #inner-content .page-contents .entry-content h2 {
       font-size: 28px; }
-    #inner-content .entry-content img {
+    #inner-content .page-contents .entry-content img {
       max-width: 100%; }
-    #inner-content .entry-content .address-box {
+    #inner-content .page-contents .entry-content .address-box {
       padding: 30px 0;
       color: #969696; }
-      #inner-content .entry-content .address-box .address {
+      #inner-content .page-contents .entry-content .address-box .address {
         padding-left: 30px;
         position: relative;
         color: #969696; }
-        #inner-content .entry-content .address-box .address:before {
+        #inner-content .page-contents .entry-content .address-box .address:before {
           font-family: 'FontAwesome';
           content: "\f041";
           position: absolute;
           left: 0; }
-      #inner-content .entry-content .address-box .addr-phone {
+      #inner-content .page-contents .entry-content .address-box .addr-phone {
         padding-left: 30px;
         position: relative;
         color: #969696; }
-        #inner-content .entry-content .address-box .addr-phone:before {
+        #inner-content .page-contents .entry-content .address-box .addr-phone:before {
           font-family: 'FontAwesome';
           content: "\f095";
           position: absolute;
           left: 0; }
-      #inner-content .entry-content .address-box .addr-email {
+      #inner-content .page-contents .entry-content .address-box .addr-email {
         padding-left: 30px;
         position: relative; }
-        #inner-content .entry-content .address-box .addr-email:before {
+        #inner-content .page-contents .entry-content .address-box .addr-email:before {
           font-family: 'FontAwesome';
           content: "\f0e0";
           position: absolute;
           left: 0;
           color: #969696; }
-      #inner-content .entry-content .address-box a {
+      #inner-content .page-contents .entry-content .address-box a {
         color: #969696; }
   #inner-content .entry-sidebar .widget {
     border: 1px solid #eaeaea;

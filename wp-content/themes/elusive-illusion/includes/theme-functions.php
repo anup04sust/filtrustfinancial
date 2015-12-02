@@ -1,5 +1,4 @@
 <?php
-
 /*
  * @package IllusiveDesign
  * @subpackage Elusive Illusion
@@ -21,10 +20,11 @@ add_action('eli_after_body', 'theme_browserupgrade');
 /*
  * add custom  favicon
  */
-function theme_mobileMenu(){
-  wp_nav_menu(array('theme_location' => 'mobile-nav', 'menu_class' => 'mm-nav', 'menu_id' => '', 'container_id' => 'mobilemenu-container','container_class' => 'mm-menu mm-offcanvas'));
 
+function theme_mobileMenu() {
+  wp_nav_menu(array('theme_location' => 'mobile-nav', 'menu_class' => 'mm-nav', 'menu_id' => '', 'container_id' => 'mobilemenu-container', 'container_class' => 'mm-menu mm-offcanvas'));
 }
+
 function theme_custom_favicon() {
   global $eli_options;
   if (!empty($eli_options['custom_favicon'])) {
@@ -78,30 +78,31 @@ function theme_layout_style() {
   $container = (!empty($eli_options['layout']) && $eli_options['layout'] == 'fluid') ? 'container-fluid' : 'container';
   echo $container;
 }
-function theme_social_links($echo =TRUE){
+
+function theme_social_links($echo = TRUE) {
   global $eli_options;
   $services = array('facebook', 'twitter', 'google-plus', 'youtube', 'linkedin', 'pinterest', 'rss', 'tumblr', 'flickr', 'instagram', 'dribbble', 'skype', 'github', 'slideshare', 'vk');
-        $social = '<ul  class="theme_social">';
-        $prefix = $eli_options['social_icons_prefix'];
-        if(!empty($prefix)){
-           $social .= '<li class="inner-dsc"><span class="sr">'.$prefix.'</span></li>';
-        }
-        
-        foreach ($services as $service) :
-            $active[$service] = $eli_options['social_'.$service];       
-            if (!empty($active[$service])) {
-              $social .= '<li><a href="' . $active[$service] . '" target="_BLANK" class="social-icon ' . $service . '" title="' . __('Follow us on ', 'mclinic') . $service . '"><i class="fa fa-' . $service . '"></i></a></li>';
-              
-            }
-        endforeach;
-        $social .= '</ul>';
-        if($echo){
-          echo $social;
-        }else{
-          return $social;
-        }
-        
+  $social = '<ul  class="theme_social">';
+  $prefix = $eli_options['social_icons_prefix'];
+  if (!empty($prefix)) {
+    $social .= '<li class="inner-dsc"><span class="sr">' . $prefix . '</span></li>';
+  }
+
+  foreach ($services as $service) :
+    $active[$service] = $eli_options['social_' . $service];
+    if (!empty($active[$service])) {
+      $social .= '<li><a href="' . $active[$service] . '" target="_BLANK" class="social-icon ' . $service . '" title="' . __('Follow us on ', 'mclinic') . $service . '"><i class="fa fa-' . $service . '"></i></a></li>';
+    }
+  endforeach;
+  $social .= '</ul>';
+  if ($echo) {
+    echo $social;
+  }
+  else {
+    return $social;
+  }
 }
+
 if (!function_exists('theme_primary_menu')) {
 
   function theme_primary_menu() {
@@ -118,12 +119,14 @@ if (!function_exists('theme_primary_menu')) {
   }
 
 }
-function theme_livechat_scripts(){
-   global $eli_options;
-   if(!empty($eli_options['livechat_active'])){
-     echo $eli_options['livechat_scripts'];
-   }
+
+function theme_livechat_scripts() {
+  global $eli_options;
+  if (!empty($eli_options['livechat_active'])) {
+    echo $eli_options['livechat_scripts'];
+  }
 }
+
 if (!function_exists('theme_font_url')) {
 
   /**
@@ -171,6 +174,7 @@ if (!function_exists('theme_font_url')) {
   }
 
 }
+
 function theme_page_title($display = true) {
   global $wp_locale, $page, $paged;
 
@@ -284,3 +288,78 @@ function theme_page_subtitle($display = true) {
   else
     return $subtitle;
 }
+
+/* Login Screen Hooks */
+add_action('login_enqueue_scripts', 'eli_login_scripts');
+
+function eli_login_scripts() {
+  global $eli_options; 
+//wpprint($eli_options);
+if (!empty($eli_options['customized-login'])) {
+   $logo = $eli_options['login_scn_logo']['url'];
+    ?>
+    <style type="text/css">
+      body.login{
+        background-color:<?php echo $eli_options['login_scn_bg']['background-color']; ?>;
+        background-repeat:<?php echo $eli_options['login_scn_bg']['background-repeat']; ?>;
+        background-size:<?php echo $eli_options['login_scn_bg']['background-size']; ?>;
+        background-position:<?php echo $eli_options['login_scn_bg']['background-position']; ?>;
+        background-image:url(<?php echo $eli_options['login_scn_bg']['background-image']; ?>);
+      }
+      .login h1 a {
+        background-image: url(<?php echo $logo; ?>);
+        margin-bottom: 15px;
+        width:100%;    
+        background-size: auto;
+        background-position: center top;
+      }
+      .login #loginform{
+        border-width: 0;
+        background-color: <?php echo $eli_options['login_form_bg']['rgba']; ?>;
+        border-color: <?php echo $eli_options['login_form_border']['border-color']; ?>;
+        border-style: <?php echo $eli_options['login_form_border']['border-style']; ?>;
+        border-left-width: <?php echo $eli_options['login_form_border']['border-left']; ?>;
+        border-top-width: <?php echo $eli_options['login_form_border']['border-top']; ?>;
+        border-right-width: <?php echo $eli_options['login_form_border']['border-right']; ?>;
+        border-bottom-width: <?php echo $eli_options['login_form_border']['border-bottom']; ?>;
+      }
+      .login #loginform label{
+          color:<?php echo $eli_options['login_form_color']; ?>;       
+      }
+      .login #loginform input.button{
+        border:0;
+        color:<?php echo $eli_options['login_button_text']; ?>;
+        background:<?php echo $eli_options['login_button_bg']; ?>;
+        border-radius: 2px;
+        //box-shadow: 0 0 2px 1px rgba(0, 0, 0, .5) inset;
+        box-shadow: none;
+            padding: 0 25px;
+      }
+      .login #nav a,.login #backtoblog a{
+          color:<?php echo $eli_options['login_link_color']; ?>;       
+      }
+      
+    </style>
+    <?php
+  }
+}
+
+function eli_login_logo_url($url) {
+  global $eli_options;
+  if (!empty($eli_options['customized-login'])) {
+    $url = home_url();
+  }
+  return $url;
+}
+
+add_filter('login_headerurl', 'eli_login_logo_url');
+
+function eli_login_logo_url_title($title) {
+  global $eli_options;
+  if (!empty($eli_options['customized-login'])) {
+    $title = get_bloginfo('name');
+  }
+  return $title;
+}
+
+add_filter('login_headertitle', 'eli_login_logo_url_title');

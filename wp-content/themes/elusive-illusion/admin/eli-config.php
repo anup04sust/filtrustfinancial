@@ -179,6 +179,7 @@ class ELI_Config {
     $sections[] = $this->optionFooter();
     $sections[] = $this->optionSocial();
     $sections[] = $this->optionTweet();
+    $sections[] = $this->optionloginScreen();
 
     return apply_filters('add_eli_theme_option', $sections);
   }
@@ -598,6 +599,90 @@ class ELI_Config {
       'icon' => 'el el-star',
       'fields' => apply_filters('redux/' . $this->opt_name . '/sections/social/fields', $fields),
         //'subsection' => TRUE,
+    );
+  }
+
+  function optionloginScreen() {
+    $fields = array(
+      array(
+        'id' => 'customized-login',
+        'type' => 'switch',
+        'title' => __('Enable Customized Login Screen', ELUSICVE_THEME_LAN),
+        'default' => true,
+      ),
+      array(
+        'id' => 'login_scn_logo',
+        'type' => 'media',
+        'url' => true,
+        'title' => __('Screen Logo', ELUSICVE_THEME_LAN),
+        'compiler' => 'true',
+        'desc' => __('Basic media uploader with disabled URL input field. maximum image height 84px', ELUSICVE_THEME_LAN),
+        'default' => array('url' => $this->media_url . 'logo.png'),
+      ),
+      array(
+        'id' => 'login_scn_bg',
+        'type' => 'color',
+        'title' => __('Background Color', ELUSICVE_THEME_LAN),
+        'default' => '#f1f1f1',
+      ),
+      array(
+        'id' => 'login_scn_bg',
+        'type' => 'background',
+        'title' => __('Background', ELUSICVE_THEME_LAN),
+        'default' => '#f1f1f1',
+      ),
+      array(
+        'id' => 'login_form_bg',
+        'type' => 'color_rgba',
+        'title' => __('Form Background', ELUSICVE_THEME_LAN),
+        'default' => array(
+          'color' => '#ffffff',
+          'alpha' => '.9'
+        )
+      ),
+      array(
+        'id' => 'login_form_border',
+        'type' => 'border',
+        'title' => __('Form Border', ELUSICVE_THEME_LAN),
+        'default' => array(
+          'border-color' => '#f4f4f4',
+          'border-style' => 'solid',
+          'border-top' => '1px',
+          'border-right' => '1px',
+          'border-bottom' => '1px',
+          'border-left' => '1px'
+        )
+      ),
+      array(
+        'id' => 'login_form_color',
+        'type' => 'color',
+        'title' => __('Form Text Color', ELUSICVE_THEME_LAN),
+        'default' => '#333333'
+      ),
+      array(
+        'id' => 'login_link_color',
+        'type' => 'color',
+        'title' => __('Others Link Color', ELUSICVE_THEME_LAN),
+        'default' => '#333333'
+      ),
+      array(
+        'id' => 'login_button_bg',
+        'type' => 'color',
+        'title' => __('Button Color', ELUSICVE_THEME_LAN),
+        'default' => '#333333'
+      ),
+      array(
+        'id' => 'login_button_text',
+        'type' => 'color',
+        'title' => __('Button Text Color', ELUSICVE_THEME_LAN),
+        'default' => '#fff'
+      ),
+    );
+    return array(
+      'title' => __('Login Screen', ELUSICVE_THEME_LAN),
+      'id' => 'eli-login-screen',
+      'icon' => 'el el-cogs',
+      'fields' => apply_filters('redux/' . $this->opt_name . '/sections/eli-login-screen/fields', $fields),
     );
   }
 
